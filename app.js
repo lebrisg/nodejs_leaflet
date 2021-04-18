@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var config = require("./config");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -38,4 +39,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// Test MongoDB config
+if(!config.mongoURL) {
+  console.log("Bad config parameter!");
+  return;
+}
+
+// Start http server
+app.listen(config.port, config.ip);
+console.log('Server running on http://%s:%s', config.ip, config.port);
+
+//module.exports = app;
