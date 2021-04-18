@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var config = require('../config');
 
 // Mongoose import
 var mongoose = require('mongoose');
 
 // Mongoose connection to MongoDB
-mongoose.connect('mongodb://localhost/leaflet_map', { useNewUrlParser: true }, function (error) {
+//mongoose.connect('mongodb://localhost/leaflet_map', { useNewUrlParser: true }, function (error) {
+mongoose.connect(config.mongoURL, { useNewUrlParser: true }, function (error) {
     if (error) {
         console.log(error);
     }
