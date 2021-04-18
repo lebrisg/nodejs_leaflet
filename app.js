@@ -45,6 +45,9 @@ if(!config.mongoURL) {
   return;
 }
 
+// Display the database configuration
+config.display();
+
 // Start http server
 app.listen(config.port, config.ip);
 console.log('Server running on http://%s:%s', config.ip, config.port);
